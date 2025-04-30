@@ -21,7 +21,7 @@ TEMPLATES_DIR = BASE_DIR / 'templates'
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-pme8*+rs6z2r@wez00hc24@rjg7jv1(66j3l3_16v#_5smc2z2'
+SECRET_KEY = 'qi(6nwgzq+bxi%3c%0@4ycrqh%f(1+#q8xfur9du_5!yo&^$5y'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -100,13 +100,13 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+    {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
 
