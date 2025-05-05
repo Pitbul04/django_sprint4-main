@@ -2,7 +2,6 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserChangeForm
 
-
 from .models import Post, Comment
 
 
@@ -13,9 +12,8 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = (
-            'title', 'text', 'pub_date', 'location', 'category', 'image',
-        )
+        fields = ('title', 'text', 'pub_date',
+                  'location', 'category', 'image', 'is_published')
         widgets = {
             'pub_date': forms.DateTimeInput(
                 format='%Y-%m-%dT%H:%M',
@@ -23,17 +21,13 @@ class PostForm(forms.ModelForm):
                     'type': 'datetime-local',
                     'class': 'form-control',
                 }
+            ),
+            'is_published': forms.CheckboxInput(
+                attrs={
+                    'class': 'form-check-input',
+                }
             )
         }
-
-
-class CommentForm(forms.ModelForm):
-
-    class Meta:
-        model = Comment
-        fields = (
-            'text',
-        )
 
 
 class UserEditForm(UserChangeForm):
@@ -46,4 +40,13 @@ class UserEditForm(UserChangeForm):
             'first_name',
             'last_name',
             'email'
+        )
+
+
+class CommentForm(forms.ModelForm):
+
+    class Meta:
+        model = Comment
+        fields = (
+            'text',
         )
